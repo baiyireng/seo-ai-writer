@@ -6,6 +6,9 @@ ai:
          openai:
             api_key: '%env(OPENAI_API_KEY)%'
 
+         google:
+             api_key: '%env(GOOGLE_AI_API_KEY)%'
+
     agent:
         # Agent configuration
         # see https://symfony.com/doc/current/ai/bundles/ai-bundle.html
