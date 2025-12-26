@@ -12,13 +12,13 @@ ai:
 
         default:
             platform: 'ai.platform.openai'
-            model: 'gpt-4o-mini'
+            model: 'gpt-3.5-turbo'
             prompt: |
                 You are a professional SEO content writing assistant, skilled at writing clear, readable articles.
             tools: []
 
         seo_writer: # ← 这个名称会自动绑定到 $seoWriter 参数
-            model: 'gpt-4o-mini'
+            model: 'gpt-3.5-turbo'
             tools: [ 'App\Tool\SearchTool' ]
 
     store:

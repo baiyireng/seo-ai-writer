@@ -41,17 +41,22 @@ class SearchTool
         try {
             $response = $this->httpClient->request('GET', 'https://serpapi.com/search', [
                 'query' => [
+                    'engine' => 'google',  // 明确指定搜索引擎
                     'q' => trim($query),
                     'api_key' => $this->serpApiKey,
-                    'num' => 5,          // 返回前5条结果
-                    'hl' => 'zh',        // 中文界面语言
-                    'gl' => 'cn',        // 地区：中国
-                    'google_domain' => 'google.com',
+                    'num' => 5,            // 返回前5条结果
+                    'hl' => 'en',          // 使用英文界面语言，避免可能的编码问题
+                    'gl' => 'us',          // 地区：美国
                 ],
-                'timeout' => 10,
+                'timeout' => 15,
             ]);
 
             $data = $response->toArray();
+
+            // 检查是否有错误返回
+            if (isset($data['error'])) {
+                return [['error' => 'SerpAPI Error: ' . $data['error']]];
+            }
 
             // 提取有机搜索结果
             $results = [];
